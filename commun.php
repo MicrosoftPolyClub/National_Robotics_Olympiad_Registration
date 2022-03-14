@@ -21,7 +21,7 @@
 				<div id="intro">
                         <h1>National Robotics Olympiad <br />
                         <span style="color:#000;">V3.0</span></h1>
-                        <p>Cette troisième version est exceptionnelle ,cherche l’innovation et la créativité avec des nombreuses surprises <br>organisée par club  <a href="">POLYROBOTS</a>.</p>
+                        <p>Cette troisième version est exceptionnelle ,cherche l'innovation et la créativité avec des nombreuses surprises <br>organisée par club  <a href="">POLYROBOTS</a>.</p>
                         <ul class="actions">
                             <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
                         </ul>

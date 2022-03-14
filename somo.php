@@ -8,8 +8,8 @@ include "dbconnection.php";
 						<ul class="links">
 							<li><a href="index.php">Guest</a></li>
 							<li><a href="terrain.php">Terrain</a></li>
-							<li class="active"><a href="racing.php">Racing</a></li>
-							<li><a href="somo.php">Somo</a></li>
+							<li><a href="racing.php">Racing</a></li>
+							<li class="active"><a href="somo.php">Somo</a></li>
 							<li><a href="autonome.php">Autonome</a></li>
 						</ul>
 					</nav>
@@ -17,7 +17,7 @@ include "dbconnection.php";
 					<div id="main">
 
 					<header class="major" style="margin-bottom:-30px;" >
-			<span class="date"><h2>Racing</h2></span>
+			<span class="date"><h2>Somo</h2></span>
 		</header>
 		<div id="wrapper" style="border-top:none;padding-top: 0.5rem;">
 			<form method="post">
@@ -144,7 +144,7 @@ include "dbconnection.php";
 				<!-- Copyright -->
 				<div id="copyright">
 						<ul><li>&copy; Microsoft Polytechnique Club</li></ul>
-					</div>
+				</div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
