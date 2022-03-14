@@ -1,14 +1,25 @@
 <?php       
-include "commun.php";                 
+include "commun.php";  
+include "dbconnection.php";                     
 ?>
-<div id="main" >
+
+				<!-- Nav -->
+				<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.php">Guest</a></li>
+							<li><a href="terrain.php">Terrain</a></li>
+							<li><a href="racing.php">Racing</a></li>
+						</ul>
+						
+					</nav>
+					<div id="main" >
 
 <!-- Featured Post -->
 	
 		<header class="major" >
 			<span class="date"><h2>Invités</h2></span>
 		</header>
-		<div id="wrapper" style="border-top:none;">
+		<div id="wrapper" style="border-top:none;padding-top: 1rem;">
 			<form method="post">
 				<div class="row gtr-uniform">
 					<div class="col-6 col-12-xsmall">
@@ -43,16 +54,7 @@ include "commun.php";
 			</form>
 	</div>
 	<?php
-                $servername="localhost";
-                $username="root";
-                $password="";
-                $dbname="polyrobots";
-                // Connection DB
-                $conn= new mysqli($servername,$username,$password,$dbname);
-                // Test cnx
-                if($conn->connect_error){
-                    die("Cnx Failed : ".$conn->connect_error);
-                }
+                
                 // Insertion à la base de données
                 if(isset($_POST['confirmation']))
                 {
@@ -75,12 +77,10 @@ include "commun.php";
                 }
     ?>
 </div>
-
 				<!-- Copyright -->
 					<div id="copyright">
 						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
 					</div>
-
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>

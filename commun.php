@@ -18,27 +18,16 @@
 			<div id="wrapper" class="fade-in">
 
 				<!-- Intro -->
-					<div id="intro">
-						<h1>This is<br />
-						Massively</h1>
-						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+				<div id="intro">
+                        <h1>National Robotics Olympiad <br />
+                        <span style="color:#000;">V3.0</span></h1>
+                        <p>Cette troisième version est exceptionnelle ,cherche l’innovation et la créativité avec des nombreuses surprises <br>organisée par club  <a href="">POLYROBOTS</a>.</p>
+                        <ul class="actions">
+                            <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+                        </ul>
+                    </div>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.php" class="logo">Massively</a>
-					</header>
-
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.php">Guest</a></li>
-							<li><a href="generic.php">Sponsor</a></li>
-							<li><a href="elements.php">Team</a></li>
-						</ul>
-						
-					</nav>
+                <!-- Header -->
+                    <header id="header">
+                        <a href="index.php" class="logo">PolyRobots</a>
+                    </header>

@@ -2,6 +2,15 @@
 include "commun.php";                 
 ?>
 
+				<!-- Nav -->
+				<nav id="nav">
+						<ul class="links">
+							<li><a href="index.php">Invités</a></li>
+							<li><a href="terrain.php">Terrain</a></li>
+							<li class="active"><a href="racing.php">Racing</a></li>
+						</ul>
+						
+					</nav>
 				<!-- Main -->
 					<div id="main">
 
