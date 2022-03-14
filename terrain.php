@@ -6,9 +6,11 @@ include "dbconnection.php";
 				<!-- Nav -->
 				<nav id="nav">
 						<ul class="links">
-							<li><a href="index.php">Guest</a></li>
+							<li><a href="index.php">Invités</a></li>
 							<li  class="active"><a href="terrain.php">Terrain</a></li>
 							<li><a href="racing.php">Racing</a></li>
+							<li><a href="somo.php">Somo</a></li>
+							<li><a href="autonome.php">Autonome</a></li>
 						</ul>
 					</nav>
 				<!-- Main -->
@@ -26,10 +28,6 @@ include "dbconnection.php";
 					
 					</div>
 					<div class="col-6 col-12-xsmall">
-						<h4>Email utilisateur :</h4>
-						<input type="email" name="demo-useremail" id="demo-useremail" value="" placeholder="Email Utilisateur" />
-					</div>
-					<div class="col-6 col-12-xsmall">
 						<h4>Nom du robot :</h4>
 						<input type="text" name="demo-robotname" id="demo-robotname" value="" placeholder="Robot" />
 					</div>
@@ -37,9 +35,6 @@ include "dbconnection.php";
 					<div class="col-6 col-12-xsmall">
 						<h4>Etablissement : </h4>
 						<input type="text" name="demo-etablissement" id="demo-etablissement" value="" placeholder="Etablissement" />
-					</div>
-					<div class="col-6 col-12-xsmall">
-						<input type="hidden" />
 					</div>
 					<div class="col-12">
 						<br>
@@ -114,7 +109,7 @@ include "dbconnection.php";
                 // Insertion à la base de données
                 if(isset($_POST['confirmation']))
                 {
-                    $robot_name=$_POST['demo-robotname'];
+					$robot_name=$_POST['demo-robotname'];
                     $etablissement=$_POST['demo-etablissement'];
                     
 					$leader_fullname=$_POST['demo-leaderfullname'];
@@ -130,17 +125,31 @@ include "dbconnection.php";
 					$member_phone_3=$_POST['demo-phonemember2'];
 					
 
-                    $sql=" INSERT INTO terrain_v1 (robot_name,etablissement,leader_fullname,leader_email,leader_phone,
-					member_fullname_2,member_email_2,member_phone_2,member_fullname_3,member_email_3,member_phone_3)
-	                VALUE ('$robot_name', '$etablissement', '$leader_fullname', '$leader_email', '$leader_phone',
-					'$member_fullname_2', '$member_email_2', '$member_phone_2','$member_fullname_3','$member_email_3','$member_phone_3')";
+					if (!empty($robot_name) && !empty($etablissement) && !empty($leader_fullname) && !empty($leader_email) && !empty($leader_phone)
+					&& preg_match("/^[0-9]*$/",$leader_phone) && strlen($leader_phone)== 8 ) {
+						if (!empty($member_fullname_2) && (empty($member_email_2) || empty($member_phone_2) || !preg_match("/^[0-9]*$/",$member_phone_2) || !strlen($member_phone_2)== 8)) {
+							echo '<div id="toasts" style="border-top:none;"><div class="toast red">Vérifier les champs</div></div>';
+						}else if (!empty($member_fullname_3) && (empty($member_email_3) || empty($member_phone_3) || !preg_match("/^[0-9]*$/",$member_phone_3) || !strlen($member_phone_3)== 8)) {
+							echo '<div id="toasts" style="border-top:none;"><div class="toast red">Vérifier les champs</div></div>';
+						}else{
+							$sql=" INSERT INTO terrain_v1 (robot_name,etablissement,leader_fullname,leader_email,leader_phone,member_fullname_2,
+							member_email_2,member_phone_2,member_fullname_3,member_email_3,member_phone_3)VALUE ('$robot_name', '$etablissement', 
+							'$leader_fullname', '$leader_email', '$leader_phone','$member_fullname_2', '$member_email_2', '$member_phone_2',
+							'$member_fullname_3','$member_email_3','$member_phone_3')";
 
-                    if($conn->query($sql)===TRUE)
-                    {
-                        echo "ok";
-                    }else{
-                        echo "<h2>Vérifier les champs </h2>" . $txt1 . "</h2>";
-                        echo "Error: ". $sql . "<br>" . $conn->error;
+						if($conn->query($sql)===TRUE)
+						{
+							?>
+							<div id="toasts" style="border-top:none;"><div class="toast green" > Vous êtes enregistré </div></div>
+							<?php
+						}
+						else{
+							?>
+							<div id="toasts" style="border-top:none;"><div class="toast red" > Error: <?php echo $conn->error; ?> </div></div>
+							<?php
+						}}
+					}else{
+                        echo '<div id="toasts" style="border-top:none;"><div class="toast red">Vérifier les champs</div></div>';
                     }
                 }
     ?>
@@ -159,6 +168,15 @@ include "dbconnection.php";
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function remove(){
+					const toast = document.querySelector('.toast');
+					setTimeout(()=>{
+						toast.remove();
+					},3000)
+				}
+				remove()
+			</script>
 
 	</body>
 </html>

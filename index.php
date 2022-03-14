@@ -6,7 +6,7 @@ include "dbconnection.php";
 				<!-- Nav -->
 				<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.php">Guest</a></li>
+							<li class="active"><a href="index.php">Invités</a></li>
 							<li><a href="terrain.php">Terrain</a></li>
 							<li><a href="racing.php">Racing</a></li>
 							<li><a href="somo.php">Somo</a></li>
@@ -66,20 +66,23 @@ include "dbconnection.php";
                     $phone=$_POST['demo-telephone'];
                     $etablissement=$_POST['demo-etablissement'];
 
-                    $sql=" INSERT INTO guests (name,lastName,email,phone,etablissement)
-	                VALUE ('$name', '$lastName', '$email', '$phone', '$etablissement')";
+					if (!empty($lastName) && !empty($name) && !empty($email) && !empty($phone) && !empty($etablissement)  && preg_match("/^[0-9]*$/",$phone) && strlen($phone)== 8) {
+						$sql=" INSERT INTO guests (name,lastName,email,phone,etablissement)
+						VALUE ('$name', '$lastName', '$email', '$phone', '$etablissement')";
 
-                    if($conn->query($sql)===TRUE)
-                    {
-						?>
-                        <div id="toasts" style="border-top:none;"><div class="toast green" > Vous êtes enregistré </div></div>
-						<?php
-                    }else{
-                        echo '<div id="toasts" style="border-top:none;"><div class="toast red" onload="setTimeout(()=>{
-							this.remove();
-						},3000);
-						">Vérifier les champs</div></div>';
-                        echo "Error: ". $sql . "<br>" . $conn->error;
+						if($conn->query($sql)===TRUE)
+						{
+							?>
+							<div id="toasts" style="border-top:none;"><div class="toast green" > Vous êtes enregistré </div></div>
+							<?php
+						}
+						else{
+							?>
+							<div id="toasts" style="border-top:none;"><div class="toast red" > Error: <?php echo $conn->error; ?> </div></div>
+							<?php
+						}
+					}else{
+                        echo '<div id="toasts" style="border-top:none;"><div class="toast red">Vérifier les champs</div></div>';
                     }
                 }
     ?>
