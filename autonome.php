@@ -20,48 +20,44 @@ include "dbconnection.php";
 					<div id="main">
 
 					<header class="major" style="margin-bottom:-30px;" >
-			<span class="date"><h2>Autonome</h2></span>
-		</header>
-		<div id="wrapper" style="border-top:none;padding-top: 0.5rem;">
-			<form method="post">
-				<div class="row gtr-uniform">
-					<?php
-						if(isset($_POST['chercher']) && !empty($_POST['robot_name1']) &&  empty($_POST['demo-leaderfullname'])){	
-							$robot=$_POST['robot_name1'];
-							$sql2="SELECT * FROM `autonome` WHERE robot_name = '".$_POST['robot_name1']."'";
-							$result2 = mysqli_query($conn,$sql2);
-							include "firstCase.php"; 
-						}
-						elseif (isset($_POST['chercher']) && !empty($_POST['robot_name1']) &&  !empty($_POST['demo-leaderfullname'])) {
-							$robot=$_POST['robot_name1'];
-							$sql2="SELECT * FROM `autonome` WHERE robot_name = '".$_POST['robot_name1']."' and leader_fullname='".$_POST['demo-leaderfullname']."'";
-							$result2 = mysqli_query($conn,$sql2);
-							if (mysqli_num_rows($result2)>0) {
-								while($row = $result2->fetch_assoc()) {
-								include "thirdCase.php";  
-								}
-							}
-						}else{
-								include "secondCase.php"; 
-						} 
-					?>
-					<!-- Break -->
-					<div class="col-12">
-						<br>
-						<ul class="actions">
-							<li><input type="submit" value="Confirmer" class="primary" name="confirmation"/></li>
-							<li><input type="submit" value="chercher" name="chercher"/></li>
-							<li><input type="reset" value="Reset" class="primary"/></li>
-						</ul>
+						<span class="date"><h2>Autonome</h2></span>
+					</header>
+					<div id="wrapper" style="border-top:none;padding-top: 0.5rem;">
+						<form method="post">
+							<div class="row gtr-uniform">
+								<?php
+									if(isset($_POST['chercher']) && !empty($_POST['robot_name1']) &&  empty($_POST['demo-leaderfullname'])){	
+										$robot=$_POST['robot_name1'];
+										$sql2="SELECT * FROM `autonome` WHERE robot_name = '".$_POST['robot_name1']."'";
+										$result2 = mysqli_query($conn,$sql2);
+										include "firstCase.php"; 
+									}
+									elseif (isset($_POST['chercher']) && !empty($_POST['robot_name1']) &&  !empty($_POST['demo-leaderfullname'])) {
+										$robot=$_POST['robot_name1'];
+										$sql2="SELECT * FROM `autonome` WHERE robot_name = '".$_POST['robot_name1']."' and leader_fullname='".$_POST['demo-leaderfullname']."'";
+										$result2 = mysqli_query($conn,$sql2);
+										if (mysqli_num_rows($result2)>0) {
+											while($row = $result2->fetch_assoc()) {
+											include "thirdCase.php";  
+											}
+										}
+									}else{
+											include "secondCase.php"; 
+									} 
+								?>
+								<!-- Break -->
+								<div class="col-12">
+									<br>
+									<ul class="actions">
+										<li><input type="submit" value="Confirmer" class="primary" name="confirmation"/></li>
+										<li><input type="submit" value="chercher" name="chercher"/></li>
+										<li><input type="reset" value="Reset" class="primary"/></li>
+									</ul>
+								</div>
+							</div>
+						</form>
 					</div>
-				</div>
-			</form>
-	</div>
 	<?php
-				if(isset($_POST['robot_name']))
-                {
-
-				}
                 // Insertion à la base de données
                 if(isset($_POST['confirmation']))
                 {
@@ -88,7 +84,7 @@ include "dbconnection.php";
 						}else if (!empty($member_fullname_3) && (empty($member_email_3) || empty($member_phone_3) || !preg_match("/^[0-9]*$/",$member_phone_3) || !strlen($member_phone_3)== 8)) {
 							echo '<div id="toasts" style="border-top:none;"><div class="toast red">Vérifier les champs</div></div>';
 						}else{
-							$sql=" INSERT INTO terrain_v1 (robot_name,etablissement,leader_fullname,leader_email,leader_phone,member_fullname_2,
+							$sql=" INSERT INTO autonome_v1 (robot_name,etablissement,leader_fullname,leader_email,leader_phone,member_fullname_2,
 							member_email_2,member_phone_2,member_fullname_3,member_email_3,member_phone_3)VALUE ('$robot_name', '$etablissement', 
 							'$leader_fullname', '$leader_email', '$leader_phone','$member_fullname_2', '$member_email_2', '$member_phone_2',
 							'$member_fullname_3','$member_email_3','$member_phone_3')";

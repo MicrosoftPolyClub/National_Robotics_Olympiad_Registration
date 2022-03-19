@@ -27,6 +27,7 @@
 										}
 										?>
 									</select>
+                                    <small style="color:bleu"><?php echo $row["payment"];?></small>
 								</div>
 							
 							

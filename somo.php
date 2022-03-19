@@ -83,7 +83,7 @@ include "dbconnection.php";
 						}else if (!empty($member_fullname_3) && (empty($member_email_3) || empty($member_phone_3) || !preg_match("/^[0-9]*$/",$member_phone_3) || !strlen($member_phone_3)== 8)) {
 							echo '<div id="toasts" style="border-top:none;"><div class="toast red">Vérifier les champs</div></div>';
 						}else{
-							$sql=" INSERT INTO terrain_v1 (robot_name,etablissement,leader_fullname,leader_email,leader_phone,member_fullname_2,
+							$sql=" INSERT INTO somo_v1 (robot_name,etablissement,leader_fullname,leader_email,leader_phone,member_fullname_2,
 							member_email_2,member_phone_2,member_fullname_3,member_email_3,member_phone_3)VALUE ('$robot_name', '$etablissement', 
 							'$leader_fullname', '$leader_email', '$leader_phone','$member_fullname_2', '$member_email_2', '$member_phone_2',
 							'$member_fullname_3','$member_email_3','$member_phone_3')";
